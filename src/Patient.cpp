@@ -2,6 +2,19 @@
 
 uint32_t Patient::idCount = 0;
 
+Details::Details (
+        uint32_t _id,
+        std::string _name,
+        uint8_t _triageScore,
+        std::string _condition
+        )
+    :
+    id(_id),
+    name(_name),
+    triageScore(_triageScore),
+    condition(_condition)
+{}
+
 Patient::Patient (
         std::string _name,
         std::string _condition
@@ -49,4 +62,8 @@ void Patient::ShowPatient () {
         << id << msd::nl
         << name << msd::nl
         << condition << msd::nl;
+}
+
+Details Patient::GetDetails () const {
+    return Details(id, name, triageScore, condition);
 }

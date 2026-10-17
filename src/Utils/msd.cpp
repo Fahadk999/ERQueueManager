@@ -11,7 +11,7 @@ void msd::AskText (std::string prompt, std::string& buffer)
             << prompt
             << ": ";
         std::getline(std::cin, buffer);
-    } while (buffer.size() > 0);
+    } while (buffer.size() < 0);
 }
 
 

@@ -3,13 +3,14 @@
 #include <queue>
 #include "Patient.hpp"
 
-class ERQueue {
+class ER {
 private:
-    std::priority_queue<Patient> Queue;
+    std::priority_queue<Patient> ERQueue;
 
 public:
-    ERQueue () = default;
+    ER () = default;
 
     void AddPatient ();
+    void ShowWaiting ();
 };
 

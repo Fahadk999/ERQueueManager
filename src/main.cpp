@@ -1,6 +1,8 @@
-#include <iostream>
+#include "App.hpp"
 
 int main () {
-    std::cout << "Hello ER";
+
+    App::Run();
+
     return 0;
 }
