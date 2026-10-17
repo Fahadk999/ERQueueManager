@@ -30,5 +30,5 @@ void ER::ShowWaiting () {
 }
 
 void ER::TreatPatient () {
-    ERQueue.pop();
+    if (!(ERQueue.empty())) ERQueue.pop();
 }

@@ -17,7 +17,11 @@ void App::Run () {
             << "3. View Emergency Queue\n"
             << "4. Exit\n"
             << "Enter Your Choice: ";
-        std::cin >> choice;
+        if (!(std::cin >> choice)) {
+            std::cout << "Enter a number b/w 1 and 4!\n";
+            std::cin.clear();
+        }
+
         std::cin.ignore();
 
         switch (choice) {
@@ -37,7 +41,6 @@ void App::Run () {
                 break;
             default: 
                 std::cerr << "\nInvalid Input\n";
-                break;
         }
     }
 }
