@@ -17,8 +17,10 @@ void App::Run () {
             << "3. View Emergency Queue\n"
             << "4. Exit\n"
             << "Enter Your Choice: ";
+        
         if (!(std::cin >> choice)) {
             std::cout << "Enter a number b/w 1 and 4!\n";
+            // for avodi inf loo p agian :(((
             std::cin.clear();
         }
 

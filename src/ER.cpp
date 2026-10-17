@@ -19,9 +19,9 @@ void ER::ShowWaiting () {
         auto details = tempQueue.top().GetDetails();
         std::cout 
             << "ID: "
-            << details.id
+            << details.id << msd::space
             << "Name: "
-            << details.name
+            << details.name << msd::space
             << "Condition: "
             << details.condition
             << msd::nl;
