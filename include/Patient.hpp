@@ -6,13 +6,13 @@
 struct Details {
     uint32_t id;
     std::string name;
-    uint8_t triageScore;
+    uint16_t triageScore;
     std::string condition;
 
     Details (
         uint32_t,
         std::string,
-        uint8_t,
+        uint16_t,
         std::string
         );
 };
@@ -22,7 +22,7 @@ private:
     static uint32_t idCount;
     uint32_t id;
     std::string name;
-    uint8_t triageScore;
+    uint16_t triageScore;
     std::string condition;
     
     void CalcTriageScore ();

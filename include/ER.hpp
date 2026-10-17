@@ -2,6 +2,7 @@
 
 #include <queue>
 #include "Patient.hpp"
+#include <iomanip>
 
 class ER {
 private:

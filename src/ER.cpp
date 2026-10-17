@@ -13,17 +13,29 @@ void ER::ShowWaiting () {
     std::priority_queue<Patient> tempQueue = ERQueue;
     
     std::cout << "--- Waiting List ---" << msd::nl;
+    struct {
+        int id = 10;
+        int name = 20;
+        int cond = 20;
+        int prio = 6;
+    } Width;
 
+    std::cout
+        << std::left
+        << std::setw(Width.id) << "ID"
+        << std::setw(Width.name) << "Name"
+        << std::setw(Width.cond) << "Condidtion"
+        << std::setw(Width.prio) << "Priority Score"
+        << msd::nl;
     while (!(tempQueue.empty()))
     {
         auto details = tempQueue.top().GetDetails();
         std::cout 
-            << "ID: "
-            << details.id << msd::space
-            << "Name: "
-            << details.name << msd::space
-            << "Condition: "
-            << details.condition
+            << std::left
+            << std::setw(Width.id) << details.id 
+            << std::setw(Width.name) << details.name 
+            << std::setw(Width.cond) << details.condition 
+            << std::setw(Width.prio) << details.triageScore
             << msd::nl;
         tempQueue.pop();
     }

@@ -10,6 +10,8 @@ void App::Run () {
     short int choice; 
 
     while (running) {
+        // change for windows
+        std::system("clear");
         std::cout 
             << "\n--- ER Triage Manager ---\n"
             << "1. Register New Patien\n"
@@ -44,5 +46,7 @@ void App::Run () {
             default: 
                 std::cerr << "\nInvalid Input\n";
         }
+        // press Enter to continue
+        std::cin.get();
     }
 }

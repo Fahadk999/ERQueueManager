@@ -5,7 +5,7 @@ uint32_t Patient::idCount = 0;
 Details::Details (
         uint32_t _id,
         std::string _name,
-        uint8_t _triageScore,
+        uint16_t _triageScore,
         std::string _condition
         )
     :
@@ -50,7 +50,11 @@ void Patient::CalcTriageScore () {
     std::cout << "Enter your Blood Pressure: ";
     Validate(bloodPressure);
 
-    triageScore = bloodPressure + heartRate;
+    triageScore = 
+        static_cast<uint16_t>(bloodPressure) 
+        +
+        static_cast<uint16_t>(heartRate);
+    std::cout << "\n[Success] Patient Added" << msd::nl;
 }
 
 bool Patient::operator < (const Patient& other) const {

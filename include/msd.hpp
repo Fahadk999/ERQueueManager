@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include <cstdlib>
 
 namespace msd {
     extern char nl;
