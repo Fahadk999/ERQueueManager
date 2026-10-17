@@ -6,6 +6,7 @@ void ER::AddPatient () {
     msd::AskText("Enter Patient Name", name);
     msd::AskText("Enter Patient Condition", condition);
     Patient newPatient(name, condition);
+    ERQueue.push(newPatient);
 }
 
 void ER::ShowWaiting () {
@@ -24,5 +25,6 @@ void ER::ShowWaiting () {
             << "Condition: "
             << details.condition
             << msd::nl;
+        tempQueue.pop();
     }
 }
