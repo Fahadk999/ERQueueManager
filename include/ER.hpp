@@ -12,5 +12,6 @@ public:
 
     void AddPatient ();
     void ShowWaiting ();
+    void TreatPatient ();
 };
 

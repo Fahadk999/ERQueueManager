@@ -28,3 +28,7 @@ void ER::ShowWaiting () {
         tempQueue.pop();
     }
 }
+
+void ER::TreatPatient () {
+    ERQueue.pop();
+}

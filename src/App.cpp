@@ -25,6 +25,7 @@ void App::Run () {
                 er.AddPatient();
                 break;
             case 2:
+                er.TreatPatient();
                 break;
             case 3:
                 er.ShowWaiting();
@@ -33,6 +34,10 @@ void App::Run () {
                 std::cout
                     << "\nExited Program\n";
                 running = false;
+                break;
+            default: 
+                std::cerr << "\nInvalid Input\n";
+                break;
         }
     }
 }
