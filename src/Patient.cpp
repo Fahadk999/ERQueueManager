@@ -2,35 +2,34 @@
 
 uint32_t Patient::idCount = 0;
 
-Details::Details (
-        uint32_t _id,
-        std::string _name,
-        uint16_t _triageScore,
-        std::string _condition
+void Details::Fill (
+        uint8_t _painLevel,
+        uint8_t _heartRate,
+        uint8_t _bloodPressure,
+        uint16_t _triageScore
         )
-    :
-    id(_id),
-    name(_name),
-    triageScore(_triageScore),
-    condition(_condition)
-{}
+{
+    painLevel = _painLevel;
+    heartRate = _heartRate;
+    bloodPressure = _bloodPressure;
+    triageScore = _triageScore;
+}
 
 Patient::Patient (
-        std::string _name,
+        std::string _name, // add gender also
+        std::string _gender,
         std::string _condition
         ) 
-    :
-    name(_name),
-    condition(_condition)
 {
+    details.name = _name;
+    details.condition = _condition;
+    details.gender = _gender;
     // post for first to be 0
-    id = idCount++; 
+    details.id = idCount++; 
     CalcTriageScore();
 }
 
 void Patient::CalcTriageScore () {
-    uint8_t heartRate, bloodPressure;
-
     auto Validate = [] (uint8_t& storeBuffer) {
         int inputBuffer;
         while (!(std::cin >> inputBuffer)
@@ -46,28 +45,28 @@ void Patient::CalcTriageScore () {
         storeBuffer = static_cast<uint8_t>(inputBuffer);
     };
     std::cout << "Enter your Hear Rate: ";
-    Validate(heartRate);
+    Validate(details.heartRate);
     std::cout << "Enter your Blood Pressure: ";
-    Validate(bloodPressure);
+    Validate(details.bloodPressure);
 
-    triageScore = 
-        static_cast<uint16_t>(bloodPressure) 
+    details.triageScore = 
+        static_cast<uint16_t>(details.bloodPressure) 
         +
-        static_cast<uint16_t>(heartRate);
+        static_cast<uint16_t>(details.heartRate);
     std::cout << "\n[Success] Patient Added" << msd::nl;
 }
 
 bool Patient::operator < (const Patient& other) const {
-    return this->triageScore < other.triageScore;
+    return this->details.triageScore < other.details.triageScore;
 }
 
 void Patient::ShowPatient () {
     std::cout << "Your Stats: "
-        << id << msd::nl
-        << name << msd::nl
-        << condition << msd::nl;
+        << details.id << msd::nl
+        << details.name << msd::nl
+        << details.condition << msd::nl;
 }
 
 Details Patient::GetDetails () const {
-    return Details(id, name, triageScore, condition);
+    return details;
 }

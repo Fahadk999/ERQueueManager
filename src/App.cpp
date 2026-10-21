@@ -46,7 +46,7 @@ void App::Run () {
             default: 
                 std::cerr << "\nInvalid Input\n";
         }
-        // press Enter to continue
+        std::cout << "\nPress Enter to continue...";
         std::cin.get();
     }
 }

@@ -1,11 +1,12 @@
 #include "ER.hpp"
 
 void ER::AddPatient () {
-    std::string name, condition;
+    std::string name, gender, condition;
 
     msd::AskText("Enter Patient Name", name);
+    msd::AskText("Enter your gender", gender);
     msd::AskText("Enter Patient Condition", condition);
-    Patient newPatient(name, condition);
+    Patient newPatient(name, gender, condition);
     ERQueue.push(newPatient);
 }
 
@@ -14,28 +15,29 @@ void ER::ShowWaiting () {
     
     std::cout << "--- Waiting List ---" << msd::nl;
     struct {
-        int id = 10;
-        int name = 20;
-        int cond = 20;
-        int prio = 6;
+        int small = 6;
+        int medium = 10;
+        int large = 20;
     } Width;
 
     std::cout
         << std::left
-        << std::setw(Width.id) << "ID"
-        << std::setw(Width.name) << "Name"
-        << std::setw(Width.cond) << "Condidtion"
-        << std::setw(Width.prio) << "Priority Score"
+        << std::setw(Width.small) << "ID"
+        << std::setw(Width.large) << "Name"
+        << std::setw(Width.large) << "Gender"
+        << std::setw(Width.large) << "Condidtion"
+        << std::setw(Width.medium) << "Priority Score"
         << msd::nl;
     while (!(tempQueue.empty()))
     {
         auto details = tempQueue.top().GetDetails();
         std::cout 
             << std::left
-            << std::setw(Width.id) << details.id 
-            << std::setw(Width.name) << details.name 
-            << std::setw(Width.cond) << details.condition 
-            << std::setw(Width.prio) << details.triageScore
+            << std::setw(Width.small) << details.id 
+            << std::setw(Width.large) << details.name 
+            << std::setw(Width.large) << details.gender
+            << std::setw(Width.large) << details.condition 
+            << std::setw(Width.medium) << details.triageScore
             << msd::nl;
         tempQueue.pop();
     }
